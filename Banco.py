@@ -8,9 +8,13 @@ MENU = '''======Bem vindo ao Banco DIO======
     [1] Depositar
     [2] Saque
     [3] Extrato
-    [4] Sair
+    [4] Cadastro de Clientes
+    [5] Sair
     Escolha uma Opção de Operação: '''
 
+# DEFINIÇÃO DA FUNÇÃO DE DEPOSITO
+# ELA SOMA VALORES ACIMA DE 0 AO SALDO
+# ELA TEM COMO RETORNO O SALDO E O EXTRATO
 def funcao_deposito(Deposito, Saldo, Extrato):
     Deposito = int(input("Digite o Valor Para Depositar:"))
     if(Deposito > 0):
@@ -20,6 +24,12 @@ def funcao_deposito(Deposito, Saldo, Extrato):
         return Saldo, Extrato
     else:
         print(f"Valor do Deposito deve ser acima de R$ 0,00")
+
+# DEFINIÇÃO DA FUNÇÃO DE SAQUE
+# ELA SUBTRAI DO SALDO VALORES MAIORES QUE 0
+# O LIMITE DE VALOR MAXIMO POR SAQUE É 500
+# TEM O LIMITE DE 3 SAQUES POR USO
+# RETORNA O SAQUE, SALDO, EXTRATO E QUANTIDADE DE SAQUE POR DIA
 def funcao_saque(Saque, Saldo, Extrato, Quantidade_Saque_Dia):
     LIMITE_MAXIMO_POR_SAQUE = 500
 
@@ -45,11 +55,17 @@ def funcao_saque(Saque, Saldo, Extrato, Quantidade_Saque_Dia):
         print("Limite de Saque Diarios Permitido Alcançado")
         return Saldo, Extrato, Quantidade_Saque_Dia
 
+# DEFINIÇÃO DA FUNÇÃO DE EXTRATO
+# ELA IMPRIME O EXTRATO QUE FOI RECIBIDO DE OUTRAS FUNÇÕES
+# ELA RETORNA O SALDO E EXTRATO 
 def funcao_extrato(Saldo, Extrato):
     print("Imprimindo Extrato:")
     print(Extrato)
     print(f"Saldo Atual: {Saldo:.2f}")
     return Saldo, Extrato
+
+def funcao_cadastro_de_clientes():
+
         
 Operacao = int(input(MENU))
 
@@ -75,6 +91,7 @@ while True:
     elif(Operacao == 5):
         print("Obrigado pela Preferência")
         break
+    
     else:
         (print("Opção Incorreta"))
         Operacao = int(input(MENU))
